@@ -1,0 +1,12 @@
+{
+    "configurations": [
+      {
+        "name": "Miniflare (npm)",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": ["run", "local"],
+        "skipFiles": ["<node_internals>/**"]
+      }
+    ]
+  }

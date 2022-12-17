@@ -1,7 +1,5 @@
 import {Hono} from 'hono'
 import {cors} from 'hono/cors';
-import wasm from "../wasm/backend_bg.wasm";
-import init, {endianness} from "../wasm/backend";
 
 // See https://honojs.dev/docs/examples/ for more examples.
 export interface Bindings {
@@ -51,25 +49,8 @@ app.use('/api/*', async (ctx, next) => cors({
 // CORS Preflight request
 app.options('*', async (ctx) => ctx.body(null, 200))
 
-let jsEndianness = () => {
-    let uInt32 = new Uint32Array([0x11223344]);
-    let uInt8 = new Uint8Array(uInt32.buffer);
-
-    if (uInt8[0] === 0x44) {
-        return 'Little Endian';
-    } else if (uInt8[0] === 0x11) {
-        return 'Big Endian';
-    } else {
-        return 'Maybe mixed-endian?';
-    }
-};
-
 app.get('/', async ctx => {
-    await init(wasm);
-    console.log(`Javascript endianness: ${jsEndianness()}`);
-    console.log(`Rust endianness: ${endianness()}`);
-    return ctx.body("Endianness has been logged to the server. " +
-        "Run `wrangler tail` with credentials and refetch this URL.", 200);
+    return ctx.body("Hello Cloudflare.", 200);
 })
 
 export default app;

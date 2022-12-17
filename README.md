@@ -1,17 +1,12 @@
 # Template for Cloudflare Worker
 
 Includes:
-- Typescript and Rust (using Wasm)
+- Typescript
     - Typescript:
-        - Hono
+        - Hono: see https://honojs.dev/docs/getting-started/cloudflare-workers/ for docs
         - pnpm for dependency management
-        - esbuild for bundling
-    - Rust:
-        - Example getting endianness in Javascript and Wasm/Rust.
-        - wasm-bindgen
-        - wasm-pack
-        - wasm-opt
-- Problem: we can't use jest, vitest or miniflare with this project, because it looks like they don't work well with wasm projects.
+        - vitest: See https://miniflare.dev/testing/vitest for docs
+        - Miniflare for running tests. Caveat: The debugger doesn't work, even after following the workarounds in https://miniflare.dev/developing/debugger.
 
 ## Useful commands:
 

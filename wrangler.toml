@@ -33,12 +33,6 @@ DOMAIN = "appname.com"
 # database_id = ""
 # preview_database_id = ""
 
-[build]
-# command = "worker-build --release" # only rust
-# Enable if using wasm:
-command = "./scripts/build.sh"
-watch_dir = ["rust/src", "src"]
-
 # [[d1_databases]]
 # binding = "DB"
 # database_name = "appname"
