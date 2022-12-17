@@ -3,7 +3,7 @@
 Includes:
 - Typescript and Rust (using Wasm)
     - Typescript:
-        - Vitest
+        - Hono
         - pnpm for dependency management
         - esbuild for bundling
     - Rust:
@@ -11,7 +11,7 @@ Includes:
         - wasm-bindgen
         - wasm-pack
         - wasm-opt
-- Miniflare (only works if you don't enable Wasm)
+- Problem: we can't use jest, vitest or miniflare with this project, because it looks like they don't work well with wasm projects.
 
 ## Useful commands:
 
