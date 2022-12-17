@@ -1,0 +1,51 @@
+name = "appname"
+main = "src/index.ts"
+compatibility_date = "2022-12-17"
+
+#[miniflare]
+#kv_persist = true
+#cache_persist = true
+#durable_objects_persist = true
+
+[env.production]
+name = "appname"
+[env.production.vars]
+DOMAIN = "appname.com"
+# ENV_1 = "environment_variable_1"
+# ENV_2 = "environment_variable_2"
+
+[env.preview]
+name = "appname-preview"
+#services = [
+#    {binding = "WORKER_1", service = "worker_1_name"}
+#]
+[env.preview.vars]
+DOMAIN = "appname.com"
+# ENV_1 = "environment_variable_1"
+# ENV_2 = "environment_variable_2"
+# [[env.preview.r2_buckets]]
+# binding = 'R2'
+# bucket_name = 'bucket_name'
+# preview_bucket_name = 'bucket_name_preview'
+# [[env.preview.d1_databases]]
+# binding = "DB"
+# database_name = "database_name"
+# database_id = ""
+# preview_database_id = ""
+
+[build]
+# command = "worker-build --release" # only rust
+# Enable if using wasm:
+command = "./scripts/build.sh"
+watch_dir = ["rust/src", "src"]
+
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "appname"
+# database_id = ""
+# preview_database_id = "" # appname_preview
+
+# [[r2_buckets]]
+# binding = 'R2'
+# bucket_name = 'appname'
+# preview_bucket_name = 'appname-preview'
